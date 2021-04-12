@@ -1,6 +1,6 @@
 #ebay clone
 
-##available functionalities
+#available functionalities
 add product 
 remove products
 register using ur own created account,google,FB,or apple
