@@ -1,0 +1,10 @@
+*{
+     font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+
+    max-width:100%;
+   
+}
+input{
+    border-color: black;
+    border-width: 1px;
+}

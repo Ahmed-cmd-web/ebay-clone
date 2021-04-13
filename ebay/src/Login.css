@@ -1,0 +1,72 @@
+/** @format */
+
+.logincon {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginhead {
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+.signincon {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 554px;
+  width: 355px;
+}
+.signtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.signininput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 57px;
+  padding-top: 20px;
+  position: relative;
+}
+.la2,
+.passla {
+  transition: 0.2s ease all;
+  position: absolute;
+  left: 0%;
+  top: 25%;
+  pointer-events: none;
+  color: gray;
+  font-size: 16px;
+}
+
+.username,
+.passin {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: 1px;
+}
+input.username:valid ~ label.la2,
+input.username:focus ~ label.la2,
+input.passin:valid ~ label.passla,
+input.passin:focus ~ label.passla {
+  top: 0%;
+  font-size: 11px;
+}
+.username:focus,
+.passin:focus {
+  outline: none;
+  border-bottom: solid 1px blue;
+}
+.createacc:disabled{
+    background-color:gainsboro;
+    cursor: default;
+}

@@ -1,0 +1,90 @@
+.addcon{
+       background: #e2e2e2;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    
+    margin-top: 10px;
+    height: 289px;
+    box-shadow: 1px 1px gainsboro;
+
+     
+}
+.addconr{
+    align-self: flex-start;
+    padding:2px 0px 20px 20px;
+     
+}
+.addconl{
+    display: flex;
+    margin-left: 50px;;
+    flex-direction: column;
+    align-self: center;
+    padding-bottom: 20px;
+    margin-top: -25px;
+    
+}
+.addconl>div{
+    font-size: 12px;
+    color: blue;
+    cursor: pointer;
+}
+.addconl>div:hover .watchlistadd{
+    text-decoration: underline;
+}
+
+.addconl>button{
+    width: 138px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+    font-size: 16px;
+    color: white;
+    border: 1px solid transparent;
+    font-weight: 700;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.buynow{
+    background-color:#0654ba;
+}
+.buynow:hover{
+     background: -webkit-gradient(linear,left top,left bottom,from(#0079bc),to(#00509d));
+}
+.addtocart{
+    background-color:#2386c0 ;
+}
+.addtocart:hover{
+    background: -webkit-gradient(linear,left top,left bottom,from(#45aad6),to(#2386c0));
+}
+.addprice{
+    padding-left:10px;
+
+}
+p:first-child>span{
+    text-decoration: line-through 2px ;
+}
+.addconb{
+    display: inline-flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+.sats,.sold{
+    background-color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid #e2e2e2;
+    width: 120px;
+    height: 35px;
+    text-align: center;
+    font-size: 16px;;
+}
+.sats{
+    color: red;
+}
+.soldcon{
+    color: #05823f;
+}

@@ -1,0 +1,249 @@
+@media only screen and (max-width: 700px) {
+    .banner{
+display: flex;
+flex-direction: column;
+    padding-left: 30px;
+    background-color:#ccfdce;
+    max-width: 100%;
+    margin-right: -7.3px;
+    margin-left: -7.3px;
+
+    justify-content: space-between;
+    }
+    .bannerright img{
+    width: 100%;
+    
+    height:100%;
+  
+}
+}
+@media only screen and (min-width: 701px) {
+    .banner{
+    
+    display: flex;
+    padding-left: 30px;
+    background-color:#ccfdce;
+    max-width: 100%;
+    margin-right: -7.3px;
+    margin-left: -7.3px;
+
+    justify-content: space-between;
+}
+.bannerright img{
+    width: 100%;
+    object-fit: none;
+    height:100%;
+  
+}
+}
+.ebaybody{
+    max-width:100%;
+    max-height:100%;
+    
+    
+}
+
+.popularcat{
+    margin-top: 50px;
+}
+
+
+.bannerleft{
+    background-color:#ccfdce;
+    display: flex;
+    flex-direction: column;
+    color:#064d2f;
+    max-height:40%;
+    padding-bottom: 40px;
+    align-items: flex-start;
+  
+}
+.bannerleft h2,.bannerleft span,.bannerleft button{
+    background-color:#ccfdce;
+    
+}
+.bannerleft>button{
+    margin-top:15px;
+    width:44%;
+    border:1px solid #333;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    padding-top: 10px;
+    padding-right: 17px;
+    padding-bottom: 10px;
+    padding-left: 17px;
+    cursor: pointer;
+}
+.bannerleft>a{
+    white-space: nowrap;
+    margin-top: 5px;
+    padding-right: 20px;
+    margin-bottom: -10px;
+    text-decoration: none;
+    color:  #064d2f
+}
+.bannerleft>span{
+    font-size: 20px;
+}
+.bannertitle{
+    display:flex;
+    flex-wrap: nowrap;
+    font-size:2.5rem;
+    font-weight: 700;
+
+}
+.shop{
+    background-color:#ccfdce;
+}
+.bannerleft>button:hover{
+    color: rgb(204,253,206);
+    transition: all 500ms cubic-bezier(0.39,0.5,0.15,1.36);
+    background-color:#064d2f ;
+}
+
+.bannerleft>button:hover .shop{
+    color: rgb(204,253,206);
+    transition: all 500ms cubic-bezier(0.39,0.5,0.15,1.36);
+    background-color:#064d2f ;
+
+}
+.title__pop{
+    padding-left: 20px;
+}
+.content__pop{
+    display:flex;
+    
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 27px;
+    padding-left: 27px;
+}
+@media only screen and (max-width: 800px) {
+    .content__pop{
+flex-wrap: wrap;
+    }
+}
+.Deals>a{
+    padding-left: 20px;
+}
+.Deals{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.dealscon{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-right: 27px;
+    padding-left: 27px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    
+}
+.Deals a{
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+.Deals>a *{
+    padding: 0px 10px 0px 10px;
+}
+.ebaybody>hr{
+    margin-top:110px;
+    margin-bottom:50px;
+}
+.x{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
+
+.popularcat2link{
+    display:flex;
+    
+    color: black;
+    text-decoration: none;
+    padding-left: 20px;
+}
+.popularcat2link h2{
+    margin-left: 10px;
+}
+.popularcat2link>h2:hover{
+    text-decoration: underline;
+}
+.more{
+    font-weight: normal;
+}
+.popularcat2{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.rec{
+    padding-left: 20px;
+    margin-top: -17px;
+    margin-bottom:20px;
+}
+.scroll{
+    display: none;
+    border-radius:60px;
+    border: 1px transparent black;
+    z-index: 99;
+    position: absolute;
+    right: 0%;
+    padding-top: 5px;
+    padding-left: 10px;
+    align-self: center;
+    margin-right: 20px;
+    width: 3%;
+    height: 6%;
+}
+
+.reverse{
+    display: none;
+    border-radius:60px;
+    border: 1px transparent white;
+    z-index: 200;
+    position: absolute;
+    left: 0%;
+    padding-top: 5px;
+    padding-left: 10px;
+    align-self: center;
+    margin-left: 25px;
+    width: 3%;
+    height: 6%;
+    
+}
+
+.dealscon>button:hover{
+    background-color:gainsboro;
+    color:white;
+}
+.dealscon:hover .scroll{
+    display: inline-flex;
+
+}
+.dealscon:hover .reverse{
+     display: inline-flex;
+}
+
+.content__rec{
+    display: flex;
+    justify-content: flex-start;
+    
+    overflow: scroll;
+    text-decoration: none;
+    
+
+}
+.recentlyviewed>h2{
+    padding-left:10px
+}
+.recentlyviewed{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
