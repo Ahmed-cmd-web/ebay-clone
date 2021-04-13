@@ -67,7 +67,7 @@ function Registeration(props) {
     auth
       .signInWithPopup(apple)
       .then((res) => {
-        
+
         history.push("/");
       })
       .catch((e) => alert(e.message));
@@ -114,7 +114,7 @@ function Registeration(props) {
             <div className="regform">
               <span
                 id="err"
-                style={{ position: "relative", bottom: "30px", color: "red" }}
+                style={{ position: "relative", bottom: "10px",top:'10px', color: "red" }}
               ></span>
               <form className="regleft">
                 <div className="regrow">
