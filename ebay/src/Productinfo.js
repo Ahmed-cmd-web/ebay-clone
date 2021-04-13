@@ -22,18 +22,19 @@ function Productinfo(props) {
   return (
     <div className="Productinfo">
       <div className="Productinfocon">
-        <iframe
-          className="frame"
-          src={bans[Math.floor(Math.random() * bans.length)]}
-          title="banner"
-        ></iframe>
-        <div className="productdetails2">
-          {src !== undefined ? (
-            <img className="img__info" src={src} alt="" />
-          ) : (
-            ""
-          )}
-
+        
+          <iframe
+            className="frame"
+            src={bans[Math.floor(Math.random() * bans.length)]}
+            title="banner"
+          ></iframe>
+          <div className="productdetails2">
+            {src !== undefined ? (
+              <img className="img__info" src={src} alt="" />
+            ) : (
+              ""
+            )}
+         
           <div className="rightside">
             <div className="toppart">
               {" "}
@@ -78,7 +79,7 @@ function Productinfo(props) {
                 <div className="prop">
                   <span>Quantity:</span>
                   <input
-                    style={{ marginLeft: "10px",marginRight:'10px' }}
+                    style={{ marginLeft: "10px", marginRight: "10px" }}
                     type="number"
                     min={1}
                     defaultValue={1}
