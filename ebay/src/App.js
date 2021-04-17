@@ -13,8 +13,15 @@ import { auth, db } from "./Firebase";
 import store from "./Store";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import Login from './Login'
+import Login from "./Login";
+import Cart from "./Cart";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
 
+const stripePromise = loadStripe(
+  "pk_test_51IhCAHJlx8WfFvjNJbGmAHDWBcNZnWv3S8Ka4lkdD69tjXIjhjwnQuYcNLQUB7UmwblYDLvHMxXz4sqXWHmTpNGn00TQoywPz4"
+);
 
 function App(props) {
   var { basket } = props.prop.reducer1;
@@ -32,11 +39,11 @@ function App(props) {
         });
         db.doc(`users/${auth.currentUser.email}`)
           .get()
-          .then((i) => { 
+          .then((i) => {
             let info = i.data().basket;
-            
+
             if (info) {
-              info.map((i) =>   
+              info.map((i) =>
                 store.dispatch({
                   type: "add",
                   payload: {
@@ -50,9 +57,8 @@ function App(props) {
                   },
                 })
               );
-            }
-            else {
-              console.log('basket empty')
+            } else {
+              console.log("basket empty");
             }
           })
           .catch((err) => console.log(err.message));
@@ -68,13 +74,13 @@ function App(props) {
       db.doc(`users/${auth.currentUser.email}`)
         .set({ basket })
         .catch((e) => console.log(e.message));
-    } 
-  },[basket]);
+    }
+  }, [basket]);
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route path='/login'>
+          <Route path="/login">
             <Login />
           </Route>
           <Route path="/registeration">
@@ -85,7 +91,17 @@ function App(props) {
             <Headermid />
             <Productinfo />
           </Route>
-          
+          <Route path="/cart">
+            <Headertop />
+            <Headermid />
+            <Cart />
+            <Bottom />
+          </Route>
+          <Route path="/checkout">
+            <Elements stripe={stripePromise}>
+              <CheckoutForm />
+            </Elements>
+          </Route>
           <Route path="/">
             <Header />
             <Body />

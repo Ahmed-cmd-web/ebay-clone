@@ -132,13 +132,13 @@
     
 }
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.quan::-webkit-outer-spin-button,
+.quan::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
+.quan {
   -moz-appearance: textfield;
 }

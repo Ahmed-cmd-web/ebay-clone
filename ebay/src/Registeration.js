@@ -38,7 +38,7 @@ function Registeration(props) {
               user: email,
             },
           });
-          history.push("/");
+          history.push(props.prop.reducer1.history[0]);
         }
       })
       .catch((e) => (document.getElementById("err").innerText = e.message));
@@ -57,7 +57,7 @@ function Registeration(props) {
               user: credentials.additionalUserInfo.profile.email,
             },
           });
-          history.push("/");
+          history.push(props.prop.reducer1.history[0]);
         }
       })
       .catch((e) => console.log(e.code));
@@ -67,8 +67,7 @@ function Registeration(props) {
     auth
       .signInWithPopup(apple)
       .then((res) => {
-
-        history.push("/");
+        history.push(props.prop.reducer1.history[0]);
       })
       .catch((e) => alert(e.message));
   };
@@ -85,7 +84,7 @@ function Registeration(props) {
             user: credentials.additionalUserInfo.profile.email,
           },
         });
-        history.push("/");
+        history.push(props.prop.reducer1.history[0]);
       })
       .catch((e) => alert(e.message));
   };
@@ -110,11 +109,16 @@ function Registeration(props) {
         <div className="regcon">
           <h1>Create an account </h1>
 
-          <div className="regtitle" >
+          <div className="regtitle">
             <div className="regform">
               <span
                 id="err"
-                style={{ position: "relative", bottom: "10px",top:'10px', color: "red" }}
+                style={{
+                  position: "relative",
+                  bottom: "10px",
+                  top: "10px",
+                  color: "red",
+                }}
               ></span>
               <form className="regleft">
                 <div className="regrow">

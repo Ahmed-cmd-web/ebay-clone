@@ -11,14 +11,14 @@ import { total } from './reducer'
 import  CurrencyFormat  from  "react-currency-format";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "./Firebase";
+import store from "./Store";
 
 
 
 function Headertop(props) {
+ 
   const history = useHistory();
   const { user } = props.prop.reducer1;
-    
-
   const signout = () => {
       auth.signOut().then(() =>
       history.push("/registeration"));
@@ -48,6 +48,14 @@ function Headertop(props) {
               Hi! {"  "}
               <span className="headeropt">
                 <Link
+                  onClick={() =>
+                    store.dispatch({
+                      type: "sethistory",
+                      payload: {
+                        his: "/",
+                      },
+                    })
+                  }
                   style={{ paddingRight: "5px", paddingLeft: "5px" }}
                   className="headeropt"
                   to="/login"
@@ -59,6 +67,14 @@ function Headertop(props) {
               or
               <span className="headeropt">
                 <Link
+                  onClick={() =>
+                    store.dispatch({
+                      type: "sethistory",
+                      payload: {
+                        his: "/",
+                      },
+                    })
+                  }
                   style={{ paddingRight: "5px", paddingLeft: "5px" }}
                   className="headeropt"
                   to={"/Registeration"}
@@ -174,13 +190,19 @@ function Headertop(props) {
                   )}
                   <button
                     className="checkout2"
+                    onClick={() =>
+                      user.length > 0
+                        ? history.push("/checkout")
+                        : history.push("/login")
+                    }
                     disabled={
                       props.prop.reducer1.basket.length > 0 ? false : true
                     }
                   >
                     Checkout
-                  </button>
+                  </button>{" "}
                   <button
+                    onClick={() => history.push("/cart")}
                     className="viewc"
                     disabled={
                       props.prop.reducer1.basket.length > 0 ? false : true
@@ -197,6 +219,7 @@ function Headertop(props) {
     </div>
   );
 }
+
 const mapStateToProps = (state) => {
   return {
     prop: state,

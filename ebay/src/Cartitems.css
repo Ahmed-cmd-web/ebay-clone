@@ -1,0 +1,66 @@
+/** @format */
+@media only screen and (max-width: 1000px) {
+  .quansec {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: baseline;
+  }
+}
+@media only screen and (min-width: 1001px) {
+  .quansec {
+    display: flex;
+    align-items: center;
+  }
+}
+.cartitems {
+  
+  background-color: white;
+  border: 1px solid gainsboro;
+  height: auto;
+  margin-bottom: 10px;
+}
+.cartitemscon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 25px;
+}
+.leftsec,
+.rightsec {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.leftsec {
+  flex: 0.5;
+}
+.rightsec {
+  flex: 0.3;
+  position: relative;
+  flex-direction: column;
+  white-space: nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.imgcontainer {
+  width: 200px;
+  border: black 1px transparent;
+  display: flex;
+  justify-content: center;
+}
+.cartitemsimg {
+  height: 150px;
+  object-fit: scale-down;
+}
+
+.quansec input {
+  width: 25%;
+  flex: 0.2;
+}
+.rem {
+  position: absolute;
+  top: 125px;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}

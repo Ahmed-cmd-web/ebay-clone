@@ -85,6 +85,7 @@ function Productinfo(props) {
                     defaultValue={1}
                     onChange={handleChange}
                     required
+                    className='quan'
                   />
                   <span>
                     More than {Math.floor(Math.random() * 200) + 10} available /{" "}

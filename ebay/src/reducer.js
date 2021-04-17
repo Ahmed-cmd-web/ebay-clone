@@ -1,13 +1,15 @@
 /** @format */
 import { combineReducers } from "redux";
-
 var intialstate = {
-  basket:[],
-  user:[]
-}
+  basket: [],
+  user: [],
+  history:[]
+};
 var fakestate = [];
 var recentlyviewed = [];
 export const total = (c) => c?.reduce((a, b) => parseFloat(b.price) + a, 0);
+export const totalitems = (c) =>
+  c?.reduce((a, b) => parseInt(b.quantity) + a, 0);
 const reducer1 = (state = intialstate, action) => {
   switch (action.type) {
     case "add":
@@ -24,19 +26,33 @@ const reducer1 = (state = intialstate, action) => {
       );
       return {
         ...state,
-        basket:[...state.basket]
+        basket: [...state.basket],
       };
-    case 'setuser':
+    case "setuser":
       return {
         ...state,
-        user:[action.payload]
-      }
-    case 'removeuser':
+        user: [action.payload],
+      };
+    case "removeuser":
       return {
         ...state,
         user: [],
-        basket:[]
+        basket: [],
       };
+    case "update":
+      var index = state.basket.findIndex((i) => i.src === action.payload.src);
+
+      state.basket[index].quantity = action.payload.quantity;
+      state.basket[index].price = action.payload.price;
+      return {
+        ...state,
+        basket: [...state.basket],
+      };
+    case 'sethistory':
+      return {
+        ...state,
+        history:[action.payload.his]
+      }
     default:
       return state;
   }

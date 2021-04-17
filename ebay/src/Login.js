@@ -1,42 +1,45 @@
 /** @format */
 
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { auth, google, apple, fb } from "./Firebase";
 import "./Login.css";
 import store from "./Store";
 
-function Login() {
+function Login(props) {
+  console.log(props.props[0]);
   const history = useHistory();
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
   const [ver, setver] = useState(false);
-    const [disable, setdisable] = useState(true);
-    const signin = (e) => {
-      e.preventDefault();
-      auth
-        .signInWithEmailAndPassword(email, pass)
-        .then((user) => {
-          if (user) {
-              console.log(user.user)
-              store.dispatch({
-                type: "setuser",
-                payload: {
-                  fname: user.user.displayName.match(/\S+/g)[0],
-                  lname: user.user.displayName.match(/\S+/g)[1],
-                  user: user.user.email,
-                },
-              });
-            history.push("/");
-          }
-        })
-          .catch((e) =>
-              {setver(false)
-              return (document.getElementById("error").innerText = e.message)});
-    };
+  const [disable, setdisable] = useState(true);
+  const signin = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, pass)
+      .then((user) => {
+        if (user) {
+          console.log(user.user);
+          store.dispatch({
+            type: "setuser",
+            payload: {
+              fname: user.user.displayName.match(/\S+/g)[0],
+              lname: user.user.displayName.match(/\S+/g)[1],
+              user: user.user.email,
+            },
+          });
+          history.push(props.props[0]);
+        }
+      })
+      .catch((e) => {
+        setver(false);
+        return (document.getElementById("error").innerText = e.message);
+      });
+  };
   const check = (e) => {
-      if (e.target.value.length > 0) {
-        setpass(e.target.value);
+    if (e.target.value.length > 0) {
+      setpass(e.target.value);
       setdisable(false);
     } else {
       setdisable(true);
@@ -56,7 +59,7 @@ function Login() {
               user: credentials.additionalUserInfo.profile.email,
             },
           });
-          history.push("/");
+          history.push(props.props[0]);
         }
       })
       .catch((e) => console.log(e.code));
@@ -66,7 +69,7 @@ function Login() {
     auth
       .signInWithPopup(apple)
       .then((res) => {
-        history.push("/");
+        history.push(props.props[0]);
       })
       .catch((e) => alert(e.message));
   };
@@ -83,7 +86,7 @@ function Login() {
             user: credentials.additionalUserInfo.profile.email,
           },
         });
-        history.push("/");
+        history.push(props.props[0]);
       })
       .catch((e) => alert(e.message));
   };
@@ -149,7 +152,10 @@ function Login() {
               }}
               onClick={signinwithfb}
             >
-              <img src="https://img.icons8.com/material-sharp/35/ffffff/facebook.png" alt='' />
+              <img
+                src="https://img.icons8.com/material-sharp/35/ffffff/facebook.png"
+                alt=""
+              />
               <p>Continue with Facebook</p>
             </button>
             <button onClick={signinwithapple} className="google">
@@ -199,5 +205,7 @@ function Login() {
     </div>
   );
 }
-
-export default Login;
+const mapStateToProps = (state) => {
+  return { props: state.reducer1.history };
+};
+export default connect(mapStateToProps)(Login);
