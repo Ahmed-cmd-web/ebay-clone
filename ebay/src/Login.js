@@ -8,7 +8,7 @@ import "./Login.css";
 import store from "./Store";
 
 function Login(props) {
-  console.log(props.props[0]);
+  
   const history = useHistory();
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
