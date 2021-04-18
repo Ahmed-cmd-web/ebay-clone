@@ -15,32 +15,31 @@ const bans = [
 function Productinfo(props) {
   var [quantity, setquantity] = useState(1);
   const handleChange = (e) => {
-    setquantity(quantity = e.target.value)
-  }
+    setquantity((quantity = e.target.value));
+  };
   const { src, price, title, expiry, condition, rating } = props.prop.reducer2;
-  
+
   return (
     <div className="Productinfo">
       <div className="Productinfocon">
-        
-          <iframe
-            className="frame"
-            src={bans[Math.floor(Math.random() * bans.length)]}
-            title="banner"
-          ></iframe>
-          <div className="productdetails2">
-            {src !== undefined ? (
-              <img className="img__info" src={src} alt="" />
-            ) : (
-              ""
-            )}
-         
+        <iframe
+          className="frame"
+          src={bans[Math.floor(Math.random() * bans.length)]}
+          title="banner"
+        ></iframe>
+        <div className="productdetails2">
+          {src !== undefined ? (
+            <img className="img__info" src={src} alt="" />
+          ) : (
+            ""
+          )}
+
           <div className="rightside">
             <div className="toppart">
               {" "}
               <h2>{title}</h2>
               {price > 0 ? (
-                <span>
+                <span style={{ whiteSpace: "normal" }}>
                   ✔ WORLDWIDE SHIPPING ✔ FRESH - EXPIRY {expiry.toUpperCase()}
                 </span>
               ) : (
@@ -85,7 +84,7 @@ function Productinfo(props) {
                     defaultValue={1}
                     onChange={handleChange}
                     required
-                    className='quan'
+                    className="quan"
                   />
                   <span>
                     More than {Math.floor(Math.random() * 200) + 10} available /{" "}

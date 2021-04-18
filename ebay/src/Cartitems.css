@@ -1,26 +1,51 @@
 /** @format */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1120px) {
   .quansec {
     display: flex;
     flex-direction: column-reverse;
     align-items: baseline;
     font-size: small;
   }
+  .quansec input {
+    width: 25%;
+    flex: 0.2;
+  }
 }
-@media only screen and (min-width: 1001px) {
+@media only screen and (min-width: 1121px) {
   .quansec {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+  }
+  .quansec input {
+    width: 35%;
+    flex: 0.2;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
   .rem {
     text-decoration: underline;
     color: blue;
     cursor: pointer;
   }
+  .cartitems {
+    width: 100%;
+    background-color: white;
+    border: 1px solid gainsboro;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .cartitemscon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 25px 10px 25px 10px;
+    width: 80%;
+    object-fit: scale-down;
+  }
 }
-@media only screen and (min-width: 401px) {
+@media only screen and (min-width: 601px) {
   .rem {
     position: relative;
     top: 20px;
@@ -29,22 +54,24 @@
     color: blue;
     cursor: pointer;
   }
+  .cartitemscon {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 25px 10px 25px 10px;
+    width: 80%;
+    object-fit: scale-down;
+  }
+  .cartitems {
+    width: 100%;
+    background-color: white;
+    border: 1px solid gainsboro;
+    height: auto;
+    margin-bottom: 10px;
+  }
 }
-.cartitems {
-  width: 100%;
-  background-color: white;
-  border: 1px solid gainsboro;
-  height: auto;
-  margin-bottom: 10px;
-}
-.cartitemscon {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 25px 10px 25px 10px;
-  width: 90%;
-  object-fit: scale-down;
-}
+
 .leftsec,
 .rightsec {
   display: flex;
@@ -71,9 +98,4 @@
 .cartitemsimg {
   height: 130px;
   object-fit: scale-down;
-}
-
-.quansec input {
-  width: 25%;
-  flex: 0.2;
 }

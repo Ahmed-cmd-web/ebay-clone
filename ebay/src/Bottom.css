@@ -1,7 +1,7 @@
 /** @format */
 
-@media only screen and (max-width: 1050px) {
-  a > span {
+@media only screen and (max-width: 550px) {
+  a>span {
     display: none;
   }
   .part2 {
@@ -11,7 +11,29 @@
     display: flex;
     white-space: nowrap;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: flex-start;
+    margin-bottom: 100px;
+  }
+
+  .Bottomcon > * {
+    margin: 0px 10px 0px 10px;
+    align-self: baseline;
+  }
+  .column {
+    height: 45px;
+  }
+}
+@media only screen and (min-width: 551px) and (max-width: 1050px) {
+  a > span {
+    display: none;
+  }
+  .part2 {
+    display: none;
+  }
+  .Bottomcon {
+    display: flex;
+    white-space: nowrap;
+    justify-content: flex-start;
     margin-bottom: 100px;
   }
 
@@ -34,7 +56,6 @@
     justify-content: baseline;
   }
 }
-
 
 @media only screen and (min-width: 1051px) {
   .Bottomcon {

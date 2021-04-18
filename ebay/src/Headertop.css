@@ -33,7 +33,7 @@
 }
 .dropdown {
   display: flex;
-  overflow: clip;
+  overflow: visible;
   position: relative;
   padding-left: 0px;
   margin-left: 40px;

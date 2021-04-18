@@ -488,7 +488,7 @@ function Body(props) {
           </button>
         </div>
       </div>
-      <hr></hr>
+      
     </div>
   );
 }

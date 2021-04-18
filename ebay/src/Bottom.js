@@ -5,6 +5,7 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 function Bottom() {
     return (
       <div className="Bottom">
+        <hr style={{color:'gainsboro'}}></hr>
         <div className="Bottomcon">
           <div className="column">
             <a href="ex">
@@ -48,9 +49,7 @@ function Bottom() {
               </a>{" "}
             </div>
             <div className="part2">
-              
-                <h3 className="title">Tools & apps</h3>
-              
+              <h3 className="title">Tools & apps</h3>
               <a href="ex">
                 <span>Developers</span>
               </a>{" "}
