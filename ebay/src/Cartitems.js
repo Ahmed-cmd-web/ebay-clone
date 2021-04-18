@@ -55,7 +55,7 @@ function Cartitems(props) {
             to="/productdetails"
           >
             {" "}
-            <h3 style={{ textDecoration: "underline" }}>{title}</h3>
+            <h3 style={{ textDecoration: "underline",marginLeft:'10px' }}>{title}</h3>
           </Link>
         </div>
         <div className="rightsec">
