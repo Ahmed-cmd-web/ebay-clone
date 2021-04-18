@@ -4,22 +4,37 @@
   a > span {
     display: none;
   }
-  .part2{
-    display:none
+  .part2 {
+    display: none;
   }
   .Bottomcon {
-    display: inline-flex;
+    display: flex;
     white-space: nowrap;
+    flex-direction: column;
     justify-content: baseline;
     margin-bottom: 100px;
-    
   }
-  
- .Bottomcon>*{
-   margin: 0px 10px 0px 10px;
-   align-self: baseline;
- }
+
+  .Bottomcon > * {
+    margin: 0px 10px 0px 10px;
+    align-self: baseline;
+  }
 }
+
+@media only screen and (min-width: 1051px) {
+  .Bottomcon {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 100px;
+    padding-right: 80px;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+  }
+}
+
 
 @media only screen and (min-width: 1051px) {
   .Bottomcon {

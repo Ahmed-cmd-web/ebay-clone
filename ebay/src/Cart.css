@@ -4,13 +4,12 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow: clip;
+    overflow: hidden;
     justify-content: space-between;
   }
   .productsection {
     display: flex;
     width: 100%;
-
     flex-direction: column;
     justify-content: space-evenly;
   }
@@ -32,7 +31,7 @@
   .mainsection {
     display: flex;
     align-items: flex-start;
-    overflow: clip;
+    overflow: visible;
     justify-content: space-between;
   }
   .subtotalsection {
@@ -43,16 +42,14 @@
     display: flex;
     position: sticky;
     top: 0%;
-
     flex-direction: column;
     width: 30%;
     min-width: 230px;
   }
   .productsection {
     display: flex;
-    width: 67%;
+    flex: 1;
     min-width: 600px;
-
     flex-direction: column;
     justify-content: space-evenly;
   }
