@@ -12,6 +12,25 @@
     align-items: center;
   }
 }
+@media only screen and (max-width:400px){
+  .rem {
+  position: relative;
+  top: 20px;
+  right: 30px;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+}@media only screen and (min-width:401px){
+  .rem {
+  position: relative;
+  top: 20px;
+  
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+}
 .cartitems {
   
   background-color: white;
@@ -57,10 +76,4 @@
   width: 25%;
   flex: 0.2;
 }
-.rem {
-  position: absolute;
-  top: 125px;
-  text-decoration: underline;
-  color: blue;
-  cursor: pointer;
-}
+
