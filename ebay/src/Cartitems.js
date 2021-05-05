@@ -9,13 +9,17 @@ function Cartitems(props) {
   const { originalprice, discount } = props.props;
   var [quantity2, setquantity2] = useState(quantity);
   const handleChange = (e) => {
-    setquantity2((quantity2 = e.target.value));
+    setquantity2(
+      e.target.value < 1 || e.target.value === "NaN"
+        ? (quantity2 = quantity)
+        : (quantity2 = e.target.value)
+    );
     store.dispatch({
       type: "update",
       payload: {
         src: src,
         quantity: quantity2,
-        price: (originalprice * e.target.value * discount).toFixed(2),
+        price: (originalprice * quantity2 * discount).toFixed(2),
       },
     });
   };
@@ -41,6 +45,7 @@ function Cartitems(props) {
       },
     });
   };
+  
   return (
     <div className="cartitems">
       <div className="cartitemscon">
@@ -55,7 +60,9 @@ function Cartitems(props) {
             to="/productdetails"
           >
             {" "}
-            <h3 style={{ textDecoration: "underline",marginLeft:'10px' }}>{title}</h3>
+            <h3 style={{ textDecoration: "underline", marginLeft: "10px" }}>
+              {title}
+            </h3>
           </Link>
         </div>
         <div className="rightsec">

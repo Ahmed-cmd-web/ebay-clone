@@ -1,33 +1,44 @@
 /** @format */
 import { combineReducers } from "redux";
-var intialstate = {
-  basket: [],
+
+var basket = [];
+export var intialstate = {
   user: [],
-  history:[]
+  history: [],
 };
 var fakestate = [];
 var recentlyviewed = [];
 export const total = (c) => c?.reduce((a, b) => parseFloat(b.price) + a, 0);
 export const totalitems = (c) =>
   c?.reduce((a, b) => parseInt(b.quantity) + a, 0);
-const reducer1 = (state = intialstate, action) => {
+const reducer1 = (state = basket, action) => {
   switch (action.type) {
     case "add":
-      return {
-        ...state,
-        basket: [...state.basket, action.payload].filter(
-          (v, i, a) => a.findIndex((t) => t.src === v.src) === i
-        ),
-      };
+      return [...state, action.payload].filter(
+        (v, i, a) => a.findIndex((t) => t.src === v.src) === i
+      );
     case "remove":
-      state.basket.splice(
-        state.basket.findIndex((i) => i.src === action.payload.src),
+      state.splice(
+        state.findIndex((i) => i.src === action.payload.src),
         1
       );
-      return {
-        ...state,
-        basket: [...state.basket],
-      };
+      return [...state]
+
+    case "update":
+      var index = state.findIndex((i) => i.src === action.payload.src);
+      state[index].quantity = action.payload.quantity;
+      state[index].price = action.payload.price;
+      return [...state]
+    
+    case 'clear':
+      return []
+    default:
+      return state;
+  }
+};
+
+const reducer4 = (state = intialstate, action) => {
+  switch (action.type) {
     case "setuser":
       return {
         ...state,
@@ -37,22 +48,12 @@ const reducer1 = (state = intialstate, action) => {
       return {
         ...state,
         user: [],
-        basket: [],
       };
-    case "update":
-      var index = state.basket.findIndex((i) => i.src === action.payload.src);
-
-      state.basket[index].quantity = action.payload.quantity;
-      state.basket[index].price = action.payload.price;
+    case "sethistory":
       return {
         ...state,
-        basket: [...state.basket],
+        history: [action.payload.his],
       };
-    case 'sethistory':
-      return {
-        ...state,
-        history:[action.payload.his]
-      }
     default:
       return state;
   }
@@ -98,6 +99,7 @@ const reducer = combineReducers({
   reducer1,
   reducer2,
   reducer3,
+  reducer4,
 });
 
 export default reducer;

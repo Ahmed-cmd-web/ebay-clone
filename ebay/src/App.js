@@ -27,7 +27,7 @@ function App(props) {
   var { basket } = props.prop.reducer1;
   
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
       if (user) {
         store.dispatch({
           type: "setuser",
@@ -37,7 +37,7 @@ function App(props) {
             user: user.email,
           },
         });
-        db.doc(`users/${auth.currentUser.email}`)
+        await db.doc(`users/${auth.currentUser.email}`)
           .get()
           .then((i) => {
             let info = i.data().basket;

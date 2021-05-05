@@ -206,6 +206,6 @@ function Login(props) {
   );
 }
 const mapStateToProps = (state) => {
-  return { props: state.reducer1.history };
+  return { props: state.reducer4.history };
 };
 export default connect(mapStateToProps)(Login);

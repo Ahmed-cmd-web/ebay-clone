@@ -9,7 +9,6 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { connect } from "react-redux";
 function Body(props) {
-  
   return (
     <div className="ebaybody">
       <div className="banner">
@@ -276,7 +275,7 @@ function Body(props) {
       <div className="popularcat2">
         <a className="popularcat2link" href="ex">
           <h2 className="title__pop2">Explore popular categories</h2>{" "}
-          <h2 className="more" style={{marginLeft:'20px'}}>
+          <h2 className="more" style={{ marginLeft: "20px" }}>
             See all
             <ArrowForwardIcon className="x" />{" "}
           </h2>
@@ -335,7 +334,9 @@ function Body(props) {
             <ArrowForwardIcon className="x" />{" "}
           </h2>
         </a>
-        <div className="rec" style={{marginLeft:'10px'}}>Recommended for you</div>
+        <div className="rec" style={{ marginLeft: "10px" }}>
+          Recommended for you
+        </div>
         <div id="2" className="dealscon">
           <button
             className="reverse"
@@ -488,7 +489,6 @@ function Body(props) {
           </button>
         </div>
       </div>
-      
     </div>
   );
 }

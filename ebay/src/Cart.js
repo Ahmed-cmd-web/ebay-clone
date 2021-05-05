@@ -1,15 +1,33 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./Cart.css";
 import Cartitems from "./Cartitems";
 import { total, totalitems } from "./reducer";
 import store from "./Store";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+
 function Cart(props) {
   const history = useHistory();
   const { user } = props.prop;
+  var [loading, setloading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+
+    setTimeout(() => {
+      if (mounted) {
+        setloading(false);
+      }
+    }, 3000);
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <div className="cartpage">
@@ -17,28 +35,36 @@ function Cart(props) {
         <div className="title2">
           Shopping cart({totalitems(props.props)} items)
         </div>
+
         <div className="mainsection">
-          <div className="productsection">
-            {" "}
-            {props.props.map((i) => (
-              <Cartitems props={i} key={i.src} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="loading2">
+              <Loader type="Oval" color="#00BFFF" height={80} width={80} />
+            </div>
+          ) : (
+            <div className="productsection">
+              {" "}
+              {props.props.map((i) => (
+                <Cartitems props={i} key={i.src} />
+              ))}
+            </div>
+          )}
+
           <div className="subtotalsection">
             <button
               className="finalize"
               onClick={() => {
                 user.length > 0
                   ? history.push("/checkout")
-                  : store.dispatch({
-                      type: "sethistory",
-                      payload: {
-                        his: "/checkout",
-                      },
-                    });
-                history.push("/login");
+                  : history.push("/login");
+                return store.dispatch({
+                  type: "sethistory",
+                  payload: {
+                    his: "/checkout",
+                  },
+                });
               }}
-              disabled={total(props.props) === 0 ? true : false}
+              disabled={total(props.props) === 0 || loading ? true : false}
             >
               Go to checkout
             </button>
@@ -70,6 +96,6 @@ function Cart(props) {
   );
 }
 const mapStateToProps = (state) => {
-  return { props: state.reducer1.basket, prop: state.reducer1 };
+  return { props: state.reducer1, prop: state.reducer4 };
 };
 export default connect(mapStateToProps)(Cart);

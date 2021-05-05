@@ -12,14 +12,14 @@ const dis = () => {
     store.dispatch({
     type:'more',
       payload: {
-      
       title:props.title,
       expiry: props.expiry,
       condition: props.condition,
       src:props.src,
       price: props.price,
       rating: props.rating,
-    }
+      }
+      
 
     })
    

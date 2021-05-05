@@ -7,23 +7,31 @@ import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { connect } from "react-redux";
 import Basketitems from "./Basketitems";
-import { total } from './reducer'
-import  CurrencyFormat  from  "react-currency-format";
+import { total } from "./reducer";
+import CurrencyFormat from "react-currency-format";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "./Firebase";
 import store from "./Store";
 
-
-
 function Headertop(props) {
- 
   const history = useHistory();
-  const { user } = props.prop.reducer1;
+  const { user } = props.prop.reducer4;
   const signout = () => {
-      auth.signOut().then(() =>
-      history.push("/registeration"));
-    }
-  
+    store.dispatch({
+      type: "clear",
+    });
+
+    auth.signOut().then(() => {
+      store.dispatch({
+        type: "sethistory",
+        payload: {
+          his: "/",
+        },
+      });
+      history.push("/registeration");
+    });
+  };
+
   return (
     <div className="head">
       <ul className="headercontent">
@@ -48,14 +56,21 @@ function Headertop(props) {
               Hi! {"  "}
               <span className="headeropt">
                 <Link
-                  onClick={() =>
-                    store.dispatch({
-                      type: "sethistory",
-                      payload: {
-                        his: "/",
-                      },
-                    })
-                  }
+                  onClick={() => {
+                    window.location.pathname === "/cart"
+                      ? store.dispatch({
+                          type: "sethistory",
+                          payload: {
+                            his: "/cart",
+                          },
+                        })
+                      : store.dispatch({
+                          type: "sethistory",
+                          payload: {
+                            his: "/",
+                          },
+                        });
+                  }}
                   style={{ paddingRight: "5px", paddingLeft: "5px" }}
                   className="headeropt"
                   to="/login"
@@ -67,14 +82,21 @@ function Headertop(props) {
               or
               <span className="headeropt">
                 <Link
-                  onClick={() =>
-                    store.dispatch({
-                      type: "sethistory",
-                      payload: {
-                        his: "/",
-                      },
-                    })
-                  }
+                  onClick={() => {
+                    window.location.pathname === "/cart"
+                      ? store.dispatch({
+                          type: "sethistory",
+                          payload: {
+                            his: "/cart",
+                          },
+                        })
+                      : store.dispatch({
+                          type: "sethistory",
+                          payload: {
+                            his: "/",
+                          },
+                        });
+                  }}
                   style={{ paddingRight: "5px", paddingLeft: "5px" }}
                   className="headeropt"
                   to={"/Registeration"}
@@ -133,9 +155,9 @@ function Headertop(props) {
               <span className="headeropt">
                 <div className="headeroptcart">
                   <ShoppingCartOutlinedIcon className="cart" />
-                  {props.prop.reducer1.basket.length > 0 ? (
+                  {props.prop.reducer1.length > 0 ? (
                     <span className="basketlength">
-                      {props.prop.reducer1.basket.length}
+                      {props.prop.reducer1.length}
                     </span>
                   ) : (
                     ""
@@ -143,15 +165,15 @@ function Headertop(props) {
                 </div>
 
                 <div className="basketdropdown">
-                  {props.prop.reducer1.basket.length > 0 ? (
+                  {props.prop.reducer1.length > 0 ? (
                     <h2 style={{ color: "black", padding: "0px 5px 0px 15px" }}>
                       Shopping cart
                     </h2>
                   ) : (
                     ""
                   )}
-                  {props.prop.reducer1.basket.length > 0 ? (
-                    props.prop.reducer1.basket
+                  {props.prop.reducer1.length > 0 ? (
+                    props.prop.reducer1
                       .filter(
                         (v, i, a) => a.findIndex((t) => t.src === v.src) === i
                       )
@@ -173,12 +195,12 @@ function Headertop(props) {
                       Time to start shopping!
                     </span>
                   )}
-                  {props.prop.reducer1.basket.length > 0 ? (
+                  {props.prop.reducer1.length > 0 ? (
                     <div className="total">
                       <span style={{ color: "grey" }}>Total</span>
                       <CurrencyFormat
                         style={{ fontWeight: "bolder" }}
-                        value={total(props.prop.reducer1.basket)}
+                        value={total(props.prop.reducer1)}
                         prefix={"$"}
                         thousandSeparator={true}
                         decimalScale={2}
@@ -190,23 +212,25 @@ function Headertop(props) {
                   )}
                   <button
                     className="checkout2"
-                    onClick={() =>
+                    onClick={() => {
                       user.length > 0
                         ? history.push("/checkout")
-                        : history.push("/login")
-                    }
-                    disabled={
-                      props.prop.reducer1.basket.length > 0 ? false : true
-                    }
+                        : history.push("/login");
+                      store.dispatch({
+                        type: "sethistory",
+                        payload: {
+                          his: "/checkout",
+                        },
+                      });
+                    }}
+                    disabled={props.prop.reducer1.length > 0 ? false : true}
                   >
                     Checkout
                   </button>{" "}
                   <button
                     onClick={() => history.push("/cart")}
                     className="viewc"
-                    disabled={
-                      props.prop.reducer1.basket.length > 0 ? false : true
-                    }
+                    disabled={props.prop.reducer1.length > 0 ? false : true}
                   >
                     View cart
                   </button>

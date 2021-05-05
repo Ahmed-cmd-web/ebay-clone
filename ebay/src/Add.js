@@ -8,12 +8,14 @@ import store from "./Store";
 
 function Add(props) {
   const { src } = props;
-  const history=useHistory()
+  const history = useHistory();
   const discount = Math.floor(Math.random() * 70) + 1;
   const addtocart = () => {
-    props.prop.basket.findIndex((i) => i.src === src) === -1 &&
-    props.quantity > 0
-      ? store.dispatch({
+    if (
+      props.prop.findIndex((i) => i.src === src) === -1 &&
+      props.quantity > 0
+    ) {
+        store.dispatch({
           type: "add",
           payload: {
             quantity: props.quantity,
@@ -30,13 +32,13 @@ function Add(props) {
             condition: props.condition,
             rating: props.rating,
           },
-      })
-    
-      
-      : (document.getElementById("errorch").innerHTML =
-        "this product is already in your cart or check the quantity");
-    
-      history.push('/cart');
+        });
+      history.push("/cart");
+    } else {
+      document.getElementById("errorch").innerHTML =
+        "this product is already in your cart or check the quantity";
+    }
+    return '';
   };
 
   return (

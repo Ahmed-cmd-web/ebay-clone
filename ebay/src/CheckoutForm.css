@@ -8,6 +8,13 @@
   height: 700px;
   background-color: #f8f8f8;
 }
+.loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .paymentcon {
     margin-top: 130px;
   display: flex;

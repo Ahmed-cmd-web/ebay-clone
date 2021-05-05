@@ -1,10 +1,12 @@
 /** @format */
-import React from "react";
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./CheckoutForm.css";
 import { connect } from "react-redux";
 import { total } from "./reducer";
 import { useHistory, Link } from "react-router-dom";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 const CheckoutForm = (props) => {
   const history = useHistory();
@@ -38,54 +40,69 @@ const CheckoutForm = (props) => {
       history.pushState("/");
     }
   };
-
-  return (
-    <div className="payment">
-      <div className="loginhead">
-        {" "}
-        <Link to="/">
-          <img
-            className="logo2"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/800px-EBay_logo.svg.png"
-            alt=""
-          />
-        </Link>
+  var [loading, setloading] = useState(true);
+  setTimeout(() => {
+    setloading(loading=false)
+  },5000)
+  if (loading) {
+    return (
+      <div className="loading">
+        <Loader type="Oval" color="#00BFFF" height={80} width={80} />
       </div>
-      <div className="paymentcon">
-        <h1 style={{ fontSize: "1.25rem", fontWeight: "normal" }}>
-          total: US ${(total(props.props) + 45.16 + 87.61).toFixed(2)}
-        </h1>
-        <form className="paymentform" onSubmit={handleSubmit}>
-          <span id="parmenterror" style={{ color: "red" }}></span>
-          <div className="card">
-            <CardElement
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#424770",
-                    "::placeholder": {
-                      color: "#aab7c4",
+    );
+  }
+  else {
+    return (
+      <div className="payment">
+        <div className="loginhead">
+          {" "}
+          <Link to="/">
+            <img
+              className="logo2"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/800px-EBay_logo.svg.png"
+              alt=""
+            />
+          </Link>
+        </div>
+        <div className="paymentcon">
+          <h1 style={{ fontSize: "1.25rem", fontWeight: "normal" }}>
+            total: US ${(total(props.props) + 45.16 + 87.61).toFixed(2)}
+          </h1>
+          <form className="paymentform" onSubmit={handleSubmit}>
+            <span id="parmenterror" style={{ color: "red" }}></span>
+            <div className="card">
+              <CardElement
+                options={{
+                  style: {
+                    base: {
+                      fontSize: "16px",
+                      color: "#424770",
+                      "::placeholder": {
+                        color: "#aab7c4",
+                      },
+                    },
+                    invalid: {
+                      color: "#9e2146",
                     },
                   },
-                  invalid: {
-                    color: "#9e2146",
-                  },
-                },
-              }}
-            />
-          </div>
+                }}
+              />
+            </div>
 
-          <button className="pay" type="submit" disabled={!stripe}>
-            Pay ${(total(props.props) + 45.16 + 87.61).toFixed(2)}
-          </button>
-        </form>
+            <button className="pay" type="submit" disabled={!stripe}>
+              Pay ${(total(props.props) + 45.16 + 87.61).toFixed(2)}
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+}
+
+
+  
 };
 const mapStateToProps = (state) => {
-  return { props: state.reducer1.basket };
+  return { props: state.reducer1 };
 };
 
 export default connect(mapStateToProps)(CheckoutForm);

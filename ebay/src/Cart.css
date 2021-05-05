@@ -9,7 +9,7 @@
   }
   .productsection {
     display: flex;
-    width:95%;
+    width: 95%;
     flex-direction: column;
     justify-content: space-evenly;
   }
@@ -46,12 +46,19 @@
     width: 30%;
     min-width: 230px;
   }
-  .productsection {
+
+  .productsection{
     display: flex;
     flex: 1;
     min-width: 600px;
     flex-direction: column;
     justify-content: space-evenly;
+  }
+  .loading2{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  
   }
 }
 

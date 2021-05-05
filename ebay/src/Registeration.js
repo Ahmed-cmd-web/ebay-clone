@@ -38,7 +38,7 @@ function Registeration(props) {
               user: email,
             },
           });
-          history.push(props.prop.reducer1.history[0]);
+          history.push(props.prop.reducer4.history[0]);
         }
       })
       .catch((e) => (document.getElementById("err").innerText = e.message));
@@ -57,7 +57,7 @@ function Registeration(props) {
               user: credentials.additionalUserInfo.profile.email,
             },
           });
-          history.push(props.prop.reducer1.history[0]);
+          history.push(props.prop.reducer4.history[0]);
         }
       })
       .catch((e) => console.log(e.code));
@@ -67,7 +67,7 @@ function Registeration(props) {
     auth
       .signInWithPopup(apple)
       .then((res) => {
-        history.push(props.prop.reducer1.history[0]);
+        history.push(props.prop.reducer4.history[0]);
       })
       .catch((e) => alert(e.message));
   };
@@ -84,7 +84,7 @@ function Registeration(props) {
             user: credentials.additionalUserInfo.profile.email,
           },
         });
-        history.push(props.prop.reducer1.history[0]);
+        history.push(props.prop.reducer4.history[0]);
       })
       .catch((e) => alert(e.message));
   };
