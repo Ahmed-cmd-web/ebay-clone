@@ -99,7 +99,7 @@ const CheckoutForm = (props) => {
 }
 
 
-  
+
 };
 const mapStateToProps = (state) => {
   return { props: state.reducer1 };

@@ -2,7 +2,16 @@
      font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
 
     max-width:100%;
-   
+
+}
+body{
+    margin: 0;
+
+
+
+}
+.App{
+    height: 100vh;
 }
 input{
     border-color: black;

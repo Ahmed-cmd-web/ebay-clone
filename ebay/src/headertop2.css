@@ -1,0 +1,87 @@
+/** @format */
+
+.header2 {
+  display: flex;
+  padding: 5px 0px;
+  align-items: center;
+  font-size: 12px;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+}
+.header2 span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.right span {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .right span {
+    display: flex;
+  }
+  .right {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: space-evenly;
+}
+}
+.bell:hover {
+  color: blue;
+  cursor: pointer;
+}
+.dropdown {
+  position: relative;
+}
+.total {
+  display: flex;
+  justify-content: center;
+  color: black;
+  align-items: center;
+  font-size: 16px;
+  height: 40px;
+  width: 100%;
+  background-color: gainsboro;
+  text-decoration: none;
+}
+
+.left{
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: space-evenly;
+}
+.header2opt,
+.header2opt:visited {
+  text-decoration: none;
+  color: blue;
+}
+.header2opt:hover {
+  text-decoration: underline;
+}
+.checkoutbutton,
+.viewcartbutton {
+  width: 95%;
+  height: 40px;
+  margin: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.viewcartbutton:disabled {
+  background-color: #dddbdb;
+  color: #3665f3;
+}
+.viewcartbutton:enabled {
+  color: #3665f3;
+  margin-bottom: 15px;
+  border: 1px solid #3665f3;
+  background-color: white;
+}
+.checkoutbutton:enabled {
+  color: white;
+  background-color: blue;
+}
+.checkoutbutton:disabled {
+  color: white;
+  background-color: #dddbdb;
+}

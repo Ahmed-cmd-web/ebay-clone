@@ -2,30 +2,19 @@
 
 @media only screen and (max-width: 700px) {
   .banner {
-    display: flex;
-    flex-direction: column;
-    padding-left: 30px;
-    background-color: #ccfdce;
-    max-width: 100%;
-    margin-right: -7.3px;
-    margin-left: -7.3px;
-
-    justify-content: space-between;
+    display: none;
   }
   .bannerright img {
     width: 100%;
-
     height: 100%;
   }
 }
 @media only screen and (min-width: 701px) {
   .banner {
     display: flex;
-    padding-left: 30px;
     background-color: #ccfdce;
     max-width: 100%;
-    margin-right: -7.3px;
-    margin-left: -7.3px;
+    padding: 0px 10px ;
 
     justify-content: space-between;
   }
@@ -108,12 +97,17 @@
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  padding-right: 27px;
-  padding-left: 27px;
+
 }
 @media only screen and (max-width: 800px) {
   .content__pop {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
 .Deals > a {
@@ -126,7 +120,7 @@
 
 .dealscon {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding-right: 27px;
   padding-left: 27px;
@@ -192,20 +186,7 @@
   height: 6%;
 }
 
-.reverse {
-  display: none;
-  border-radius: 60px;
-  border: 1px transparent white;
-  z-index: 200;
-  position: absolute;
-  left: 0%;
-  padding-top: 5px;
-  padding-left: 10px;
-  align-self: center;
-  margin-left: 25px;
-  width: 3%;
-  height: 6%;
-}
+
 
 .dealscon > button:hover {
   background-color: gainsboro;

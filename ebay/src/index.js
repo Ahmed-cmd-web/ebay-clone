@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import store, { persistor } from './Store'
 import { CookiesProvider } from 'react-cookie'
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <CookiesProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
@@ -17,7 +17,7 @@ ReactDOM.render(
         </PersistGate>
       </Provider>
     </CookiesProvider>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById("root")
 );
 

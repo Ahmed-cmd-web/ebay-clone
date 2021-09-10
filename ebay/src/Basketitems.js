@@ -6,62 +6,66 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import { Link } from "react-router-dom";
 import store from "./Store";
 
-function Basketitems(props) {
+function Basketitems({
+  title,
+  expiry,
+  condition,
+  price,
+  rating,
+  src,
+  quantity,
+ ...styles
+}) {
   const dis = () => {
     store.dispatch({
       type: "more",
       payload: {
-        title: props.title,
-        expiry: props.expiry,
-        condition: props.condition,
-        src: props.src,
-        price: props.price,
-        rating: props.rating,
+        title: title,
+        expiry: expiry,
+        condition: condition,
+        src: src,
+        price: price,
+        rating: rating,
       },
     });
-    
   };
-    const remove = () =>
-      store.dispatch({
-        type: "remove",
-        payload: {
-          src: props.src,
-        },
-      });
-    return (
-      <Link
-        style={{ textDecoration: "none" }}
-        onClick={dis}
-        to="/productdetails"
-      >
-        <div className="Basketitems">
-          <div className="Basketitemscon">
-            <div className="details2">
-              {" "}
-              <div className="leftd">
-                <img src={props.src} alt="" />
+  const remove = () =>
+    store.dispatch({
+      type: "remove",
+      payload: {
+        src: src,
+      },
+    });
+  return (
+    <Link style={{ textDecoration: "none" }} onClick={dis} to="/productdetails">
+      <div className="Basketitems">
+        <div className="Basketitemscon" {...styles}>
+          <div className="details2">
+            {" "}
+            <div className="leftd">
+              <img src={src} alt="" />
+            </div>
+            <div className="rightd">
+              <span>{title}</span>
+              <div className="pricequan">
+                <span
+                  style={{
+                    fontWeight: "bolder",
+                    fontSize: "17px",
+                  }}
+                >
+                  ${price}
+                </span>
+                <span className="q">Qty: {quantity}</span>
               </div>
-              <div className="rightd">
-                <span>{props.title}</span>
-                <div className="pricequan">
-                  <span
-                    style={{
-                      fontWeight: "bolder",
-                      fontSize: "17px",
-                    }}
-                  >
-                    ${props.price}
-                  </span>
-                  <span className="q">Qty: {props.quantity}</span>
-                </div>
-                <span>Free shipping</span>
-                <DeleteOutlineOutlinedIcon onClick={remove} className="trash" />
-              </div>
+              <span>Free shipping</span>
+              <DeleteOutlineOutlinedIcon onClick={remove} className="trash" />
             </div>
           </div>
         </div>
-      </Link>
-    );
+      </div>
+    </Link>
+  );
 }
 
 export default Basketitems;

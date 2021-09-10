@@ -1,7 +1,7 @@
 /** @format */
 
 @media only screen and (max-width: 550px) {
-  a>span {
+  a > span {
     display: none;
   }
   .part2 {
@@ -69,6 +69,9 @@
     flex-direction: column;
     justify-content: baseline;
   }
+}
+.Bottom {
+  padding-bottom: 10px;
 }
 
 .column a {

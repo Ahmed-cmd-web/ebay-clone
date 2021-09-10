@@ -1,7 +1,7 @@
 /** @format */
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import firebase from "firebase/compat/app";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAQXAkVlG5oPdzdiZy46Tcoewqk4PoM1KU",
@@ -22,4 +22,4 @@ const google = new firebase.auth.GoogleAuthProvider();
 const apple = new firebase.auth.OAuthProvider("apple.com");
 const fb = new firebase.auth.FacebookAuthProvider();
 
-export {db , auth,google,apple,fb}
+export { db, auth, google, apple, fb };

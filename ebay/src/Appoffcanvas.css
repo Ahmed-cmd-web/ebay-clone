@@ -1,0 +1,37 @@
+/** @format */
+
+.menuicon {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .menuicon {
+    padding: 5px;
+    display: flex;
+  }
+}
+.menuicon:hover {
+  border: transparent 0px;
+  background-color: #e5e5e5;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.MuiDrawer-paper {
+  max-width: 90%;
+}
+.listitemdrp:hover {
+  background-color: white;
+}
+.listitemdrp {
+  width: 100%;
+  padding: 6px;
+}
+.listitem {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.listitem:hover {
+  background-color: #e5e5e5;
+}

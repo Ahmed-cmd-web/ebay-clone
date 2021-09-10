@@ -1,7 +1,6 @@
 /** @format */
 import "./App.css";
 import Header from "./Header";
-import Headertop from "./Headertop";
 import Headermid from "./Headermid";
 import Body from "./Body";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -11,24 +10,27 @@ import "react-device-emulator/lib/styles/style.css";
 import Registeration from "./Registeration";
 import { auth, db } from "./Firebase";
 import store from "./Store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Login from "./Login";
 import Cart from "./Cart";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import LoadingOverlay from "react-loading-overlay-ts";
+import Loader from "react-loader-spinner";
+import Headertop2 from "./Headertop2";
 
 const stripePromise = loadStripe(
   "pk_test_51IhCAHJlx8WfFvjNJbGmAHDWBcNZnWv3S8Ka4lkdD69tjXIjhjwnQuYcNLQUB7UmwblYDLvHMxXz4sqXWHmTpNGn00TQoywPz4"
 );
 
 function App(props) {
-  var { basket } = props.prop.reducer1;
-  
+  var basket = props.prop.reducer1;
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
-      if (user) {
+      if (user && user.displayName) {
         store.dispatch({
           type: "setuser",
           payload: {
@@ -37,11 +39,12 @@ function App(props) {
             user: user.email,
           },
         });
-        await db.doc(`users/${auth.currentUser.email}`)
+        setLoading(true);
+        await db
+          .doc(`users/${auth.currentUser.email}`)
           .get()
           .then((i) => {
             let info = i.data().basket;
-
             if (info) {
               info.map((i) =>
                 store.dispatch({
@@ -61,10 +64,16 @@ function App(props) {
               console.log("basket empty");
             }
           })
-          .catch((err) => console.log(err.message));
+          .catch((err) => {
+            console.log(err.message);
+          });
+        setLoading(false);
       } else {
         store.dispatch({
           type: "removeuser",
+        });
+        store.dispatch({
+          type: "clear",
         });
       }
     });
@@ -87,12 +96,12 @@ function App(props) {
             <Registeration />
           </Route>
           <Route path="/productdetails">
-            <Headertop />
+            <Headertop2 />
             <Headermid />
             <Productinfo />
           </Route>
           <Route path="/cart">
-            <Headertop />
+            <Headertop2 />
             <Headermid />
             <Cart />
             <Bottom />
@@ -103,9 +112,16 @@ function App(props) {
             </Elements>
           </Route>
           <Route path="/">
-            <Header />
-            <Body />
-            <Bottom />
+            <LoadingOverlay
+              active={loading}
+              spinner={
+                <Loader type="Oval" color="#00BFFF" height={80} width={80} />
+              }
+            >
+              <Header />
+              <Body />
+              <Bottom />
+            </LoadingOverlay>
           </Route>
         </Switch>
       </div>

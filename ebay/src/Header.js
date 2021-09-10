@@ -1,8 +1,8 @@
 import React from 'react'
 import './Header.css'
-import  Headertop  from "./Headertop";
 import  Headermid from "./Headermid";
 import Headerbottom from "./Headerbottom";
+import Headertop2 from './Headertop2';
 
 
 
@@ -10,8 +10,7 @@ import Headerbottom from "./Headerbottom";
 function Header() {
     return (
       <div className="header">
-        
-        <Headertop />
+        <Headertop2 />
         <Headermid />
         <Headerbottom />
       </div>
